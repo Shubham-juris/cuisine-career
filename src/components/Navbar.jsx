@@ -131,23 +131,7 @@ const Navbar = () => {
           </li>
 
           {/* Location Dropdown */}
-          <li className="relative group cursor-pointer">
-            <div className={`flex items-center gap-1 transition-colors duration-300 ${isActive("location") ? "text-gray-900" : "text-gray-700 hover:text-gray-900"}`}>
-              LOCATION <ChevronDown size={16} />
-            </div>
-            {isActive("location") && (
-              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-800 origin-left animate-scaleIn"></div>
-            )}
-            <ul className="absolute hidden group-hover:block bg-white shadow-lg rounded mt-2 w-44 z-10">
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/india">India</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/usa">USA</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/uk">UK</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/canada">Canada</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/australia">Australia</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/europe">Europe</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/middle-east">Middle East</Link></li>
-            </ul>
-          </li>
+         
 
           <li className="relative">
             <Link 

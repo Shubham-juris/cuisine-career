@@ -33,7 +33,10 @@ const Navbar = () => {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
+        <div className="flex">
         <img src={logo} alt="" className="w-12 h-12 rounded-full"/>
+        <h3 className="text-[#211612] text-4xl font-medium px-4">Cuisine Career's</h3>
+        </div>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 text-sm font-semibold text-gray-700 relative">
@@ -97,25 +100,7 @@ const Navbar = () => {
             )}
           </li>
 
-          {/* Employers Dropdown */}
-          <li className="relative group cursor-pointer">
-            <div className={`flex items-center gap-1 transition-colors duration-300 ${isActive("employers") ? "text-gray-900" : "text-gray-700 hover:text-gray-900"}`}>
-              EMPLOYERS <ChevronDown size={16} />
-            </div>
-            {isActive("employers") && (
-              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-800 origin-left animate-scaleIn"></div>
-            )}
-            <ul className="absolute hidden group-hover:block bg-white shadow-lg rounded mt-2 w-44 z-10">
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/employers/welcome">WELCOME</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/employers/manage-jobs">WHY US</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/employers/resume-search">TESTIMONIALS</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/employers/company-profiles">POSTING</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/employers/pricing">FAQS</Link></li>
-             
-            </ul>
-          </li>
-
-         
+          
           
           <li className="relative">
             <Link 
@@ -128,6 +113,9 @@ const Navbar = () => {
               <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-800 origin-left animate-scaleIn"></div>
             )}
           </li>
+
+          {/* Location Dropdown */}
+          
 
           <li className="relative">
             <Link 
@@ -195,61 +183,7 @@ const Navbar = () => {
           </Link>
 
           {/* Mobile Employers Dropdown */}
-          <div>
-            <button
-              onClick={() => setDropdown(dropdown === "employers" ? null : "employers")}
-              className="w-full flex justify-between items-center py-2"
-            >
-              <span className={`${isActive("employers") ? "text-gray-900 font-bold" : "text-gray-700"}`}>EMPLOYERS</span>
-              <ChevronDown size={16} className={`transition-transform duration-300 ${dropdown === "employers" ? "rotate-180" : ""}`} />
-            </button>
-            {dropdown === "employers" && (
-              <div className="pl-4 mt-2 space-y-2">
-                <Link 
-                  to="/employers/post-job" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Post a Job
-                </Link>
-                <Link 
-                  to="/employers/manage-jobs" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Manage Jobs
-                </Link>
-                <Link 
-                  to="/employers/resume-search" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Resume Search
-                </Link>
-                <Link 
-                  to="/employers/company-profiles" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Company Profiles
-                </Link>
-                <Link 
-                  to="/employers/pricing" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Pricing Plans
-                </Link>
-                <Link 
-                  to="/employers/support" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Employer Support
-                </Link>
-              </div>
-            )}
-          </div>
+          
 
           
           
@@ -261,69 +195,7 @@ const Navbar = () => {
             CONTACT US
           </Link>
 
-          {/* Mobile Location Dropdown */}
-          <div>
-            <button
-              onClick={() => setDropdown(dropdown === "location" ? null : "location")}
-              className="w-full flex justify-between items-center py-2"
-            >
-              <span className={`${isActive("location") ? "text-gray-900 font-bold" : "text-gray-700"}`}>LOCATION</span>
-              <ChevronDown size={16} className={`transition-transform duration-300 ${dropdown === "location" ? "rotate-180" : ""}`} />
-            </button>
-            {dropdown === "location" && (
-              <div className="pl-4 mt-2 space-y-2">
-                <Link 
-                  to="/location/india" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  India
-                </Link>
-                <Link 
-                  to="/location/usa" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  USA
-                </Link>
-                <Link 
-                  to="/location/uk" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  UK
-                </Link>
-                <Link 
-                  to="/location/canada" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Canada
-                </Link>
-                <Link 
-                  to="/location/australia" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Australia
-                </Link>
-                <Link 
-                  to="/location/europe" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Europe
-                </Link>
-                <Link 
-                  to="/location/middle-east" 
-                  className="block py-1 transition-colors duration-300 hover:text-gray-900"
-                  onClick={() => setOpen(false)}
-                >
-                  Middle East
-                </Link>
-              </div>
-            )}
-          </div>
+       
 
           <Link 
             to="/careers" 

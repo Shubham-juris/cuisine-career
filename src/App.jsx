@@ -3,19 +3,19 @@ import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
-import Home from "./pages/Home";
-import Roles from "./pages/Roles";
-import Explore from "./pages/Explore";
-import SignIn from "./pages/SignIn";
-import PostJob from "./pages/PostJob";
+import Home from "./Pages/Home";
+import Roles from "./Pages/Roles";
+import Explore from "./Pages/Explore";
+import SignIn from "./Pages/SignIn";
+import PostJob from "./Pages/PostJob";
 import EmployersLayout from "./components/Employers/EmployersLayout";
-import Jobs from "./pages/Jobs";
-import BlogDetails from "./components/BlogDetails";
-import JobDetails from "./pages/JobDetails";
-import JobSeekers from "./pages/Seekers";
-import ContactUs from "./pages/ContactUs";
-import AboutPage from "./pages/AboutPage";
-import Blog from "./pages/Blog"; // Fixed import path (correct capitalization)
+import Jobs from "./Pages/Jobs";
+import JobDetails from "./Pages/JobDetails";
+import JobSeekers from "./Pages/Seekers";
+import Blog from "./Pages/Blog";
+import BlogDetails from "./Pages/BlogDetails";
+import ContactUs from "./Pages/ContactUs";
+import AboutPage from "./Pages/AboutPage";
 
 function App() {
   return (

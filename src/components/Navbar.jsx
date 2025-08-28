@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown } from "lucide-react";
+import logo from "../assets/cuisinelogo.png"
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
@@ -32,9 +33,7 @@ const Navbar = () => {
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo */}
-        <h1 className="text-xl font-bold tracking-wide text-gray-800">
-          CUISINE CAREER'S
-        </h1>
+        <img src={logo} alt="" className="w-12 h-12 rounded-full"/>
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex gap-6 text-sm font-semibold text-gray-700 relative">
@@ -128,25 +127,6 @@ const Navbar = () => {
             {isActive("contact") && (
               <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-800 origin-left animate-scaleIn"></div>
             )}
-          </li>
-
-          {/* Location Dropdown */}
-          <li className="relative group cursor-pointer">
-            <div className={`flex items-center gap-1 transition-colors duration-300 ${isActive("location") ? "text-gray-900" : "text-gray-700 hover:text-gray-900"}`}>
-              LOCATION <ChevronDown size={16} />
-            </div>
-            {isActive("location") && (
-              <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gray-800 origin-left animate-scaleIn"></div>
-            )}
-            <ul className="absolute hidden group-hover:block bg-white shadow-lg rounded mt-2 w-44 z-10">
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/india">India</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/usa">USA</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/uk">UK</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/canada">Canada</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/australia">Australia</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/europe">Europe</Link></li>
-              <li><Link className="block px-4 py-2 hover:bg-gray-100 transition-colors duration-200" to="/location/middle-east">Middle East</Link></li>
-            </ul>
           </li>
 
           <li className="relative">

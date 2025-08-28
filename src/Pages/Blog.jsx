@@ -1,7 +1,51 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import bank from "../assets/banking.jpg";
-import { FaUtensils, FaHotel, FaConciergeBell, FaMountain, FaTree, FaMapMarkerAlt, FaCalendarAlt, FaUser } from "react-icons/fa";
+import { 
+  FaUtensils, 
+  FaHotel, 
+  FaConciergeBell, 
+  FaCalendarAlt, 
+  FaUser, 
+  FaChevronLeft, 
+  FaChevronRight 
+} from "react-icons/fa";
+
+// Carousel data with images from your blog posts
+const carouselItems = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    title: "Top 10 Kitchen Hacks Every Chef Should Know",
+    description: "Discover professional kitchen secrets that will transform your cooking",
+    category: "Cooking",
+    link: "/blog/1"
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    title: "How to Manage a Busy Hotel Front Desk",
+    description: "Essential tips for handling peak check-in times",
+    category: "Hospitality",
+    link: "/blog/2"
+  },
+  {
+    id: 3,
+    image: bank,
+    title: "Secrets to Perfect Baking Every Time",
+    description: "Learn the precise techniques that professional bakers use",
+    category: "Cooking",
+    link: "/blog/3"
+  },
+  {
+    id: 4,
+    image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+    title: "Housekeeping Best Practices in Luxury Hotels",
+    description: "The meticulous standards that define five-star service",
+    category: "Hotel",
+    link: "/blog/4"
+  }
+];
 
 const blogs = [
   { 
@@ -124,23 +168,23 @@ const BlogCard = ({ id, title, author, date, category, icon, excerpt, readTime, 
         alt={title} 
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
-      <div className="absolute top-4 left-4 bg-red-500 text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
+      <div className="absolute top-4 left-4 bg-[#8d877b] hover:bg-[#211612] text-white px-3 py-1 rounded-full text-sm font-medium flex items-center">
         <span className="mr-2">{icon}</span>
         {category}
       </div>
     </div>
     
     <div className="p-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-red-500 transition-colors">{title}</h2>
+      <h2 className="text-xl font-bold text-gray-800 mb-3 line-clamp-2 group-hover:text-[#211612] transition-colors">{title}</h2>
       <p className="text-gray-600 mb-4 line-clamp-2">{excerpt}</p>
       
       <div className="flex items-center text-sm text-gray-500 mb-4">
         <div className="flex items-center mr-4">
-          <FaUser className="mr-1 text-red-400" />
+          <FaUser className="mr-1 text-[#211612]" />
           <span>{author}</span>
         </div>
         <div className="flex items-center">
-          <FaCalendarAlt className="mr-1 text-red-400" />
+          <FaCalendarAlt className="mr-1 text-[#211612]" />
           <span>{date}</span>
         </div>
       </div>
@@ -149,7 +193,7 @@ const BlogCard = ({ id, title, author, date, category, icon, excerpt, readTime, 
         <span className="text-sm text-gray-500">{readTime}</span>
         <Link
           to={`/blog/${id}`}
-          className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center"
+          className="bg-[#8d877b] hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center"
         >
           Read More
           <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -163,6 +207,8 @@ const BlogCard = ({ id, title, author, date, category, icon, excerpt, readTime, 
 
 const Blog = () => {
   const [activeCategory, setActiveCategory] = useState("All");
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const [fadeState, setFadeState] = useState("fadeIn"); // fadeIn, fadeOut
   
   const categories = ["All", "Cooking", "Hospitality", "Hotel"];
   
@@ -170,13 +216,117 @@ const Blog = () => {
     ? blogs 
     : blogs.filter(blog => blog.category === activeCategory);
 
+  // Auto-advance carousel with fade effect
+  useEffect(() => {
+    const interval = setInterval(() => {
+      // Start fade out
+      setFadeState("fadeOut");
+      
+      // After fade out completes, change slide and fade in
+      setTimeout(() => {
+        setCurrentSlide((prevSlide) => (prevSlide + 1) % carouselItems.length);
+        setFadeState("fadeIn");
+      }, 1000); // Fade out duration
+    }, 3000); // Total time for each slide (3 seconds)
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  const nextSlide = () => {
+    setFadeState("fadeOut");
+    setTimeout(() => {
+      setCurrentSlide((prevSlide) => (prevSlide + 1) % carouselItems.length);
+      setFadeState("fadeIn");
+    }, 1000);
+  };
+
+  const prevSlide = () => {
+    setFadeState("fadeOut");
+    setTimeout(() => {
+      setCurrentSlide((prevSlide) => (prevSlide - 1 + carouselItems.length) % carouselItems.length);
+      setFadeState("fadeIn");
+    }, 1000);
+  };
+
+  const goToSlide = (index) => {
+    setFadeState("fadeOut");
+    setTimeout(() => {
+      setCurrentSlide(index);
+      setFadeState("fadeIn");
+    }, 1000);
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
+      {/* Carousel Section */}
+      <section className="relative h-96 md:h-[500px] overflow-hidden">
+        {carouselItems.map((item, index) => (
+          <div
+            key={item.id}
+            className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+              index === currentSlide
+                ? `opacity-100 ${fadeState}`
+                : "opacity-0"
+            }`}
+          >
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+            <img
+              src={item.image}
+              alt={item.title}
+              className="w-full h-full object-cover"
+            />
+            <div className={`absolute bottom-0 left-0 right-0 p-8 text-white transition-all duration-1000 ${
+              fadeState === "fadeIn" ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
+            }`}>
+              <div className="max-w-4xl mx-auto">
+                <span className="bg-[#8d877b] text-white px-3 py-1 rounded-full text-sm font-medium mb-4 inline-block">
+                  {item.category}
+                </span>
+                <h2 className="text-2xl md:text-4xl font-bold mb-4">
+                  {item.title}
+                </h2>
+                <p className="text-lg md:text-xl mb-6 max-w-2xl">
+                  {item.description}
+                </p>
+               
+              </div>
+            </div>
+          </div>
+        ))}
+        
+        {/* Navigation buttons */}
+        <button
+          onClick={prevSlide}
+          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-70 transition-all z-10"
+        >
+          <FaChevronLeft className="h-5 w-5" />
+        </button>
+        <button
+          onClick={nextSlide}
+          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-black bg-opacity-50 text-white p-3 rounded-full hover:bg-opacity-70 transition-all z-10"
+        >
+          <FaChevronRight className="h-5 w-5" />
+        </button>
+        
+        {/* Indicators */}
+        <div className="absolute bottom-4 left-0 right-0 flex justify-center space-x-2 z-10">
+          {carouselItems.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => goToSlide(index)}
+              className={`w-3 h-3 rounded-full transition-all ${
+                index === currentSlide ? "bg-white" : "bg-white bg-opacity-50"
+              }`}
+            ></button>
+          ))}
+        </div>
+      </section>
+
       {/* Blog section */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Industry Insights</h2>
+            <h2 className="text-4xl font-bold text-[#211612] mb-4">INDUSTRY INSIGHTS</h2>
             <p className="text-gray-600 max-w-2xl mx-auto">
               Latest updates, stories, and tips from the world of hospitality and cooking.
             </p>
@@ -210,8 +360,23 @@ const Blog = () => {
         </div>
       </section>
       
-      {/* Footer */}
-     
+      {/* Add custom animation styles */}
+      <style jsx>{`
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+          from { opacity: 1; }
+          to { opacity: 0; }
+        }
+        .fadeIn {
+          animation: fadeIn 1s ease-out forwards;
+        }
+        .fadeOut {
+          animation: fadeOut 1s ease-out forwards;
+        }
+      `}</style>
     </div>
   );
 };

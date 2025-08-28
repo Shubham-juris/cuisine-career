@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../assets/cuisinelogo.png";
 import {
   Facebook,
   Twitter,
@@ -15,10 +16,16 @@ const Footer = () => {
       <div className="container mx-auto px-4">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-          {/* Company Info */}
+          {/* Company Info - Adjusted to properly position the logo */}
           <div className="lg:col-span-1">
-            <h3 className="text-xl font-bold mb-4">CUISINE CAREERS</h3>
-
+            <div className="flex flex-col items-center md:items-start mb-6">
+              <img 
+                src={logo} 
+                alt="Cuisine Careers Logo" 
+                className="w-20 h-20 rounded-full object-cover mx-auto md:mx-0"
+              />
+            </div>
+            
             <h4 className="text-lg font-semibold mb-2 flex items-center gap-2">
               <MapPin className="w-5 h-5" />
               Find Us Here

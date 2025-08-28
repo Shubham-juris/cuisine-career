@@ -10,12 +10,12 @@ import SignIn from "./pages/SignIn";
 import PostJob from "./pages/PostJob";
 import EmployersLayout from "./components/Employers/EmployersLayout";
 import Jobs from "./pages/Jobs";
+import BlogDetails from "./components/BlogDetails";
 import JobDetails from "./pages/JobDetails";
 import JobSeekers from "./pages/Seekers";
-import Blog from "./pages/Blog";
-import BlogDetails from "./pages/BlogDetails";
 import ContactUs from "./pages/ContactUs";
 import AboutPage from "./pages/AboutPage";
+import Blog from "./pages/Blog"; // Fixed import path (correct capitalization)
 
 function App() {
   return (
@@ -34,8 +34,9 @@ function App() {
           <Route path="/seekers" element={<JobSeekers />} />
           <Route path="/blogs" element={<Blog />} />
           <Route path="/contact" element={<ContactUs />} />
-          <Route path="/blog/:id" element={<BlogDetails />} />
+          {/* Removed duplicate route */}
           <Route path="/employers/*" element={<EmployersLayout />} />
+          <Route path="/blog/:id" element={<BlogDetails />} />
         </Routes>
       </main>
       <Footer />

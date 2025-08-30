@@ -2,18 +2,16 @@
 import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-
 import Home from "./Pages/Home";
 import Roles from "./Pages/Roles";
 import Explore from "./Pages/Explore";
 import SignIn from "./Pages/SignIn";
-import PostJob from "./Pages/PostJob";
+import BlogDetails from "./components/BlogDetails";
 import EmployersLayout from "./components/Employers/EmployersLayout";
 import Jobs from "./Pages/Jobs";
 import JobDetails from "./Pages/JobDetails";
 import JobSeekers from "./Pages/Seekers";
 import Blog from "./Pages/Blog";
-import BlogDetails from "./Pages/BlogDetails";
 import ContactUs from "./Pages/ContactUs";
 import AboutPage from "./Pages/AboutPage";
 
@@ -36,7 +34,7 @@ function App() {
           <Route path="/contact" element={<ContactUs />} />
           {/* Removed duplicate route */}
           <Route path="/employers/*" element={<EmployersLayout />} />
-          <Route path="/blog/:id" element={<BlogDetails />} />
+          <Route path="/blogs/:id" element={<BlogDetails />} />
         </Routes>
       </main>
       <Footer />

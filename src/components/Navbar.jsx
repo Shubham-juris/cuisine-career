@@ -35,7 +35,7 @@ const Navbar = () => {
         {/* Logo */}
         <div className="flex">
         <img src={logo} alt="" className="w-12 h-12 rounded-full"/>
-        <h3 className="text-[#211612] text-4xl font-medium px-4">Cuisine Career's</h3>
+        <h3 className="text-[#211612] text-xl my-auto font-medium px-2">Cuisine Career's</h3>
         </div>
 
         {/* Desktop Menu */}

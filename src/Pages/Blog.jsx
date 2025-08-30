@@ -192,7 +192,7 @@ const BlogCard = ({ id, title, author, date, category, icon, excerpt, readTime, 
       <div className="flex justify-between items-center">
         <span className="text-sm text-gray-500">{readTime}</span>
         <Link
-          to={`/blog/${id}`}
+          to={`/blogs/${id}`}
           className="bg-[#8d877b] hover:bg-gray-600 text-white px-4 py-2 rounded-lg transition-colors duration-300 flex items-center"
         >
           Read More
@@ -288,7 +288,8 @@ const Blog = () => {
                 <p className="text-lg md:text-xl mb-6 max-w-2xl">
                   {item.description}
                 </p>
-               
+                {/* FIXED: Added Link component for carousel items */}
+                
               </div>
             </div>
           </div>

@@ -5,6 +5,7 @@ import { useParams, Link, useNavigate } from "react-router-dom";
 
 
 const AboutPage = () => {
+  const navigate = useNavigate();
   return (
     <div className="w-full flex flex-col">
 

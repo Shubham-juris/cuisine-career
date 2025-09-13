@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import background from "../assets/bg.jpg"; 
 import aboutImg from "../assets/cuisinelogo.png";
 import BrowsePostings from "../components/BrowsePostings";
@@ -25,10 +26,12 @@ const Home = () => {
           <p className="mt-4 text-lg md:text-xl text-gray-200">
             Discover fulfilling opportunities in food, farms, nonprofits,
             education, and government careers.
-          </p>
-          <button className="mt-6 px-6 py-3 bg-[#8d877b] text-white font-semibold text-lg rounded shadow-lg hover:bg-gray-800 transition">
-            EXPLORE CAREERS
-          </button>
+          </p>         
+          <Link to="/careers">
+            <button className="mt-6 px-6 py-3 bg-[#8d877b] text-white font-semibold text-lg rounded shadow-lg hover:bg-gray-800 transition">
+              EXPLORE CAREERS
+            </button>
+          </Link>
         </div>
       </section>
       

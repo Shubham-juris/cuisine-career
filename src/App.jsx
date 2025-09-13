@@ -14,12 +14,14 @@ import JobSeekers from "./Pages/Seekers";
 import Blog from "./Pages/Blog";
 import ContactUs from "./Pages/ContactUs";
 import AboutPage from "./Pages/AboutPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 function App() {
   return (
     <div className="min-h-screen flex flex-col bg-gray-50">
       <Navbar />
       <main className="flex-1">
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/roles" element={<Roles />} />
